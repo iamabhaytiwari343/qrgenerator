@@ -24,13 +24,16 @@ if st.button("Generate QR Code"):
         qr.make(fit=True)
         img = qr.make_image(fill_color="black", back_color="white")
 
-        # Display QR Code
-        st.image(img, caption="Generated QR Code", use_column_width=True)
-
-        # Download QR Code
+        # Convert to Image format compatible with Streamlit
         buffer = BytesIO()
         img.save(buffer, format="PNG")
         buffer.seek(0)
+        qr_image = Image.open(buffer)
+
+        # Display QR Code
+        st.image(qr_image, caption="Generated QR Code", use_column_width=True)
+
+        # Download QR Code
         st.download_button(
             label="Download QR Code",
             data=buffer,
