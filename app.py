@@ -4,7 +4,25 @@ from io import BytesIO
 from PIL import Image
 import pyshorteners
 
-
+# Add a custom header
+st.markdown(
+    """
+    <style>
+        .header {
+            background-color: #FFA500; /* Light orange */
+            color: black;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    <div class="header">
+        QR Code Generator & URL Shortener
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 # App Title
 st.title("QR Code Generator")
 
@@ -61,3 +79,25 @@ if st.button("Shorten URL"):
             st.error(f"Error shortening URL: {e}")
     else:
         st.error("Please enter a URL to shorten.")
+
+
+# Add a custom footer
+st.markdown(
+    """
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #FFA500; /* Light orange */
+            color: black;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <div class="footer">
+        Created by Your Name | © 2025
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
